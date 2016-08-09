@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
+//Fragment的Activity Holder的基类,可以盛放各种不同的Fragment
 public abstract class SingleFragmentActivity extends FragmentActivity {
 
     protected abstract Fragment createFragment();
@@ -19,6 +20,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 
         if (fragment == null){
             fragment = createFragment();
+            //其实一个container可以绑定多个fragment
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();

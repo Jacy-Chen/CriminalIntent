@@ -6,6 +6,8 @@ import java.util.UUID;
 /**
  * Created by jacychen on 5/6/16.
  */
+
+//数据Model - Crime的记录
 public class Crime {
     private UUID mId;
     private String mTitle;

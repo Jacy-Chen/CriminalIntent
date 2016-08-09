@@ -9,6 +9,8 @@ import java.util.UUID;
 /**
  * Created by jacychen on 5/8/16.
  */
+
+//数据Model生成器
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private List<Crime> mCrimes;
@@ -41,6 +43,7 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id) {
+        //根据UUID拿到数据详情
         for (Crime crime : mCrimes) {
             if (crime.getId().equals(id)) {
                 return crime;
@@ -48,4 +51,14 @@ public class CrimeLab {
         }
         return null;
     }
+
+    public int getItemNumber(UUID id){
+        for (Crime crime : mCrimes) {
+            if (crime.getId().equals(id)) {
+                return mCrimes.indexOf(crime);
+            }
+        }
+        return -1;
+    }
+
 }
