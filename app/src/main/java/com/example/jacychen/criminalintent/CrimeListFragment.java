@@ -77,8 +77,9 @@ public class CrimeListFragment extends Fragment {
         public void onClick(View v){
 //            Toast.makeText(getActivity(), mCrime.getTitle()+ " clicked!", Toast.LENGTH_SHORT).show();
 //            Intent intent = new Intent(getActivity(), CriminalActivity.class);
-            Intent intent = CriminalActivity.newIntent(getActivity(),mCrime.getId());
+//            Intent intent = CriminalActivity.newIntent(getActivity(),mCrime.getId());
 //            startActivity(intent);
+            Intent intent = CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
             startActivityForResult(intent, REQUEST_CRIME);
         }
     }
