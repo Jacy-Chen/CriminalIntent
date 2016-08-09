@@ -9,6 +9,7 @@ Criminal Intent record the details of "office crimes" - things like leavind dirt
   * Always use fragment if possible
   * Number of fragments shuold not over 3 in one activity
   * Custume View --> sub level plan
+  * Fragment Arguments Best, not use public instance variable to pass value.
 * Fragments Manager
   * State chasing 
   * Fragment ID and Location Spot in the Activity
