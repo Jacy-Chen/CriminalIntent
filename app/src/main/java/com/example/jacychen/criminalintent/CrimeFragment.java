@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,6 +43,10 @@ public class CrimeFragment extends Fragment{
         super.onCreate(savedInstanceState);
 //        mCrime = new Crime();
 //        UUID crimeID = (UUID) getActivity().getIntent().getSerializableExtra(CriminalActivity.EXTRA_CRIME_ID);
+
+        //声明存在menu
+        setHasOptionsMenu(true);
+
         mItemNumber = -1;
         UUID crimeID = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
 
@@ -143,6 +149,28 @@ public class CrimeFragment extends Fragment{
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             mDateButton.setText(mCrime.getDate().toString());
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        //填充view的时候一般都要待着ViewGroup
+        inflater.inflate(R.menu.fragment_crime_detail, menu);
+        MenuItem subtitleItem = menu.findItem(R.id.menu_item_remove_crime);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //menu被点击之后的作用
+        switch (item.getItemId()) {
+            case R.id.menu_item_remove_crime:
+                CrimeLab.get(getActivity()).removeCrime(mCrime);
+                getActivity().finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
